@@ -1,0 +1,47 @@
+### Register a New User
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "mythirduser@example.com",
+  "password": "password123"
+}   
+
+### Get my user data (This should FAIL)
+GET http://localhost:5001/api/user/me
+
+### Get my user data (This should SUCCEED)
+GET http://localhost:5001/api/user/me
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhiMmE1MDkzM2MwNzMyMDkyNGQ3MzNmIn0sImlhdCI6MTc1NjU2MzM0OCwiZXhwIjoxNzU2NTY2OTQ4fQ.UWhYbH_nELvZ62nsfnCwmHEotQBVGkRKiemOJYTxt34
+### Login a User to Get a Token
+POST http://localhost:5001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "myfirstuser@example.com",
+  "password": "strongpassword123"
+}
+
+### Create a new borrower
+POST http://localhost:5001/api/borrowers
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhiMmE1MDkzM2MwNzMyMDkyNGQ3MzNmIn0sImlhdCI6MTc1NjU2MzM0OCwiZXhwIjoxNzU2NTY2OTQ4fQ.UWhYbH_nELvZ62nsfnCwmHEotQBVGkRKiemOJYTxt34
+
+{
+  "name": "John Doe",
+  "contactInfo": "john.doe@email.com",
+  "notes": "First loan for a car repair."
+}
+
+### Get all of my borrowers
+GET http://localhost:5001/api/borrowers
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhiMmE1MDkzM2MwNzMyMDkyNGQ3MzNmIn0sImlhdCI6MTc1NjU2MzM0OCwiZXhwIjoxNzU2NTY2OTQ4fQ.UWhYbH_nELvZ62nsfnCwmHEotQBVGkRKiemOJYTxt34
+
+### Register a FINAL TEST user
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "finaltest@example.com",
+  "password": "password123"
+}
