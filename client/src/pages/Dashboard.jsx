@@ -92,7 +92,7 @@ const [editBorrowerData, setEditBorrowerData] = useState(null);
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      await axios.post('${import.meta.env.VITE_API_URL}/api/loans', { ...newLoan, principalAmount: parseFloat(newLoan.principalAmount), interestRate: parseFloat(newLoan.interestRate), loanTerm: parseInt(newLoan.loanTerm) }, { headers: { 'x-auth-token': token } });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/loans`, { ...newLoan, principalAmount: parseFloat(newLoan.principalAmount), interestRate: parseFloat(newLoan.interestRate), loanTerm: parseInt(newLoan.loanTerm) }, { headers: { 'x-auth-token': token } });
       setIsAddLoanOpen(false);
       setNewLoan({ borrowerId: '', loanSubject: '', principalAmount: '', interestRate: '', loanTerm: '', paymentSchedule: 'Monthly', issueDate: new Date() });
       fetchData();
@@ -103,7 +103,7 @@ const [editBorrowerData, setEditBorrowerData] = useState(null);
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.post('${import.meta.env.VITE_API_URL}/api/borrowers', { name: newBorrower.name, contactInfo: newBorrower.contactInfo }, { headers: { 'x-auth-token': token } });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/borrowers`, { name: newBorrower.name, contactInfo: newBorrower.contactInfo }, { headers: { 'x-auth-token': token } });
       setBorrowers(prev => [...prev, res.data]);
       setIsAddBorrowerOpen(false);
       setNewBorrower({ name: '', contactInfo: '' });
